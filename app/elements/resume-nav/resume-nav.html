@@ -1,0 +1,39 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+
+<polymer-element name="resume-nav" attributes="" layout vertical>
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 20%;
+        font-size: .7em;
+      }
+      paper-button{
+        height: 64px;
+        background-color: #336699;
+        color:white;
+        margin-bottom:1px;
+      }
+
+    </style>
+    <paper-button raised>profile</paper-button>
+    <paper-button raised>experience</paper-button>
+    <paper-button raised>abilities</paper-button>
+    <paper-button raised>projects</paper-button>
+    <paper-button raised>contact</paper-button>
+
+
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</polymer-element>
