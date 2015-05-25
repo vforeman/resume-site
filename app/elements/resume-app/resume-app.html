@@ -4,10 +4,11 @@
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/core-pages/core-pages.html">
 
 <polymer-element name="resume-app" attributes="">
   <template>
-  <style>
+    <style>
       :host {
         position: absolute;
         width: 100%;
@@ -43,20 +44,24 @@
         <div id="div1" class="bottom indent">Title</div>
       </core-toolbar>
       <!-- <section id="section" content></section> -->
-      <core-animated-pages transitions="cross-fade" selected="{{selected}}">
-        <profile-page></profile-page>
-        <experience-page></experience-page>
-      </core-animated-pages>
+      <core-pages transitions="cross-fade" selected="{{selected}}" valueattr="id">
+        <profile-page id="profile" selectedColor="{{selectedColor}}"></profile-page>
+        <experience-page id="experience" selectedColor="{{selectedColor}}"></experience-page>
+        <abilities-page id="abilities" selectedColor="{{selectedColor}}"></abilities-page>
+        <projects-page id="projects" selectedColor="{{selectedColor}}"></projects-page>
+        <contact-page id="contact" selectedColor="{{selectedColor}}"></contact-page>
+      </core-pages>
     </core-header-panel>
 
-    <resume-nav selected="{{selected}}"></resume-nav>
+    <resume-nav selected="{{selected}}" selectedColor="{{selectedColor}}"></resume-nav>
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
-        created: function(){
-          this.selected = 0;
+        domReady: function(){
+          this.selected = "profile";
+          this.selectedColor = "#3369E8";
         }
       });
     })();

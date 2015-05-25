@@ -1,18 +1,28 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="profile-page" attributes="">
+<polymer-element name="profile-page" attributes="selectedColor">
   <template>
     <style>
       :host {
         display: block;
       }
+      h1{
+        color: {{selectedColor}};
+      }
     </style>
-    profile page
+    <page-header >
+      <h1>profile</h1>
+      <p>I'm a Fullstack Polymer WebDeveloper and Javascript Ninja</p>
+    </page-header>
+
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
+        selectedColorChanged: function(oldVal, newVal, el){
+          console.log(el,oldVal,newVal);
+        }
       });
     })();
   </script>

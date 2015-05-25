@@ -2,8 +2,9 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
 
-<polymer-element name="resume-nav" attributes="selected" layout vertical>
+<polymer-element name="resume-nav" attributes="selected selectedColor" >
   <template>
     <style>
       :host {
@@ -15,17 +16,35 @@
       }
       paper-button{
         height: 64px;
-        background-color: #336699;
         color:white;
         margin-bottom:1px;
       }
+      paper-button#profile{
+        background-color: {{colors.b}};
+      }
+      paper-button#experience{
+        background-color: {{colors.r}};
+      }
+      paper-button#abilities{
+        background-color: {{colors.y}};
+      }
+      paper-button#projects{
+        background-color: {{colors.g}};
+      }
+      paper-button#contact{
+        background-color: {{colors.gray}};
+      }
 
     </style>
-    <paper-button raised>profile</paper-button>
-    <paper-button raised>experience</paper-button>
-    <paper-button raised>abilities</paper-button>
-    <paper-button raised>projects</paper-button>
-    <paper-button raised>contact</paper-button>
+    <core-selector selected="{{selected}}" valuesattr="id" layout vertical on-core-select="{{coreSelectHandler}}">
+      <paper-button raised id="profile" color="#3369E8">
+        <div>profile</div>
+      </paper-button>
+      <paper-button raised id="experience" color="#D50F25">experience</paper-button>
+      <paper-button raised id="abilities" color="#EEB211">abilities</paper-button>
+      <paper-button raised id="projects" color="#009925">projects</paper-button>
+      <paper-button raised id="contact" color="#666666">contact</paper-button>
+    </core-selector>
 
 
   </template>
@@ -33,6 +52,22 @@
     (function () {
       Polymer({
         // define element prototype here
+        colors:{
+          b: "#3369E8",
+          r: "#D50F25",
+          y: "#EEB211",
+          g: "#009925",
+          gray: "#666666"
+        },
+        ready: function(){
+        },
+        coreSelectHandler: function(e){
+          if(e.detail.isSelected){
+            var id = e.detail.item.id;
+            console.log(this.$[id].getAttribute("color"))
+            this.selectedColor = this.$[id].getAttribute("color");
+          }
+        }
       });
     })();
   </script>
