@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-image/core-image.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
 
 <polymer-element name="profile-page" attributes="selectedColor">
   <template>
@@ -14,7 +15,9 @@
       div.sub-body{
         margin-left: 8px;
         margin-right: 8px;
-
+      }
+      img{
+        border-radius: 400px;
       }
     </style>
     <page-header >
@@ -32,10 +35,12 @@
         </p>
       </div>
       <div class="sub-body" flex>
-        <core-image src="../../images/profile_img.jpg" sizing="contain"
-          width="250";
+        <img src="../../images/profile_img.jpg"
+          style="width:250px; height:300px;"
+          sizing="contain"
+          width="300";
           height="300"
-          position="center"></core-image>
+          position="center"></img>
       </div>
       <div class="sub-body" flex layout vertical>
         <h3>Details</h3>
@@ -52,7 +57,7 @@
       Polymer({
         // define element prototype here
         selectedColorChanged: function(oldVal, newVal, el){
-          console.log(el,oldVal,newVal);
+          // console.log(el,oldVal,newVal);
         }
       });
     })();
