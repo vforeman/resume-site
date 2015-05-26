@@ -10,12 +10,132 @@
         color: {{selectedColor}};
         font-weight: normal;
       }
+      div{
+
+      }
     </style>
+
     <page-header>
       <h1>Education &amp; Experience</h1>
-      <p>"You can't buy groceries with grades."</br> - Me</p>
+      <p>"You can't buy groceries with grades." - Me</p>
     </page-header>
     <hr>
+    <h2>Education</h2>
+    <template repeat="{{school in educations}}">
+      <education-element school="{{school}}"></education-element>
+    </template>
+    <h2>Employment</h2>
+    <template repeat="{{job in employment}}">
+      <employment-element job="{{job}}"></employment-element>
+    </template>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+        educations:[{
+            name: "Texas Academy of Mathematics and Science",
+            website: "https://tams.unt.edu/",
+            duration: "Aug 2006 - May 2008",
+            location: "Denton, TX, 76203"
+          },{
+            name: "Howard University",
+            website: "http://www2.howard.edu/",
+            duration: "Aug 2012 - Present",
+            location: "Washington, DC, 20010"
+          }
+        ],
+        employment:[{
+            company_name: "Howard University",
+            position: "Systems Adminstration Assistant",
+            duration: "8/27/2013 - present",
+            location: "Washington, DC",
+            tasks: [
+              "Oversaw Installation and Updating of new software on ~150 computers across 5 labs",
+              "Managment of LDAP servers",
+              "Management of Cloud resource servers"
+            ]
+          },{
+            company_name: "AdeLabs",
+            position: "Software Developer",
+            duration: "1/5/2014 - present",
+            location: "Washington, DC",
+            tasks: [
+              "Created Polymer/Javascript Dashboard to display paginated data",
+              "Inegrated Polymer/Javascript Dashboard with Flask-based Restful API",
+              "Developed Map-based Application using LEaftletJS and MapBoxJS"
+            ]
+          },
+        ],
+      });
+    })();
+  </script>
+</polymer-element>
+
+
+<polymer-element name="education-element" attributes="selectedColor school" layout horizontal>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      h1,h2,h3{
+        color: {{selectedColor}};
+        font-weight: normal;
+      }
+      div#left_margin{
+        width: 20%;
+        margin-right: 16px;
+      }
+    </style>
+    <div id="left_margin" layout vertical>
+      <div>{{school.name}}</div>
+      <div>{{school.duration}}</div>
+      <div>{{school.location}}</div>
+    </div>
+    <div id="right_margin" layout vertical>
+
+    </div>
+    <content></content>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+      });
+    })();
+  </script>
+</polymer-element>
+
+
+<polymer-element name="employment-element" attributes="selectedColor job" layout horizontal>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      h1,h2,h3{
+        color: {{selectedColor}};
+        font-weight: normal;
+      }
+      div#left_margin{
+        width: 20%;
+        margin-right: 16px;
+      }
+    </style>
+    <div id="left_margin" layout vertical>
+      <div>{{job.company_name}}</div>
+      <div>{{job.duration}}</div>
+      <div>{{job.location}}</div>
+    </div>
+    <div id="right_margin" layout vertical>
+      <div>{{job.position}}</div>
+      <template repeat="{{task in job.tasks}}">
+         <div> - {{task}}</div>
+      </template>
+    </div>
+    <content></content>
+
   </template>
   <script>
     (function () {
