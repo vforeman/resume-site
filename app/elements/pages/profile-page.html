@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-image/core-image.html">
 
 <polymer-element name="profile-page" attributes="selectedColor">
   <template>
@@ -6,15 +7,44 @@
       :host {
         display: block;
       }
-      h1{
+      h1,h2,h3{
         color: {{selectedColor}};
+      }
+      div.sub-body{
+        margin-left: 8px;
+        margin-right: 8px;
+
       }
     </style>
     <page-header >
-      <h1>profile</h1>
+      <h1>Victor Foreman</h1>
       <p>I'm a Fullstack Polymer WebDeveloper and Javascript Ninja</p>
     </page-header>
     <hr>
+    <div id="profile_body" layout horizontal>
+      <div class="sub-body" flex>
+        <h3>About Me</h3>
+        <p>
+          Howdy! I'm a Fullstack Web Developer. I've focused much of my attention on Node.js stacks with
+          a bit of Django when clients need it. My Front-End experience started with Angularjs but has
+          refocused on Polymer WebComponents (Go Evergreen!).
+        </p>
+      </div>
+      <div class="sub-body" flex>
+        <core-image src="../../images/profile_img.jpg" sizing="contain"
+          width="250";
+          height="300"
+          position="center"></core-image>
+      </div>
+      <div class="sub-body" flex layout vertical>
+        <h3>Details</h3>
+        Name: Victor B. Foreman
+        <div>Location: Washington, DC</div>
+        Age: 25 years old
+        <h3>I'm Sociable</h3>
+        Twitter: @GOVJ
+      </div>
+    </div>
   </template>
   <script>
     (function () {
