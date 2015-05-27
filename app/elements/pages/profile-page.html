@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-image/core-image.html">
 <link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
 <polymer-element name="profile-page" attributes="selectedColor">
   <template>
@@ -26,21 +27,24 @@
     </page-header>
     <hr>
     <div id="profile_body" layout horizontal>
-      <div class="sub-body" flex>
-        <h3>About Me</h3>
-        <p>
-          Howdy! I'm a student at Howard University and a Fullstack Web Developer. I've focused much of my attention on Node.js stacks with
-          a bit of Django when clients need it. My Front-End experience started with Angularjs but has
-          refocused on Polymer WebComponents (Go Evergreen!).
-        </p>
-      </div>
-      <div class="sub-body" flex>
+      <paper-card heading="About Me" flex>
+        <div content>
+          <p>
+            Howdy! I'm a student at Howard University and a Fullstack Web Developer. I've focused much of my attention on Node.js stacks with
+            a bit of Django when clients need it. My Front-End experience started with Angularjs but has
+            refocused on Polymer WebComponents (Go Evergreen!).
+          </p>
+        </div>
+      </paper-card>
+      <div class="sub-body" flex layout horizontal>
+        <div flex></div>
         <img src="../../images/profile_img.jpg"
           style="width:250px; height:300px;"
           sizing="contain"
           width="300";
           height="300"
           position="center"></img>
+        <div flex></div>
       </div>
       <div class="sub-body" flex layout vertical>
         <h3>Details</h3>

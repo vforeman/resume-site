@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
 
 <polymer-element name="experience-page" attributes="selectedColor">
   <template>
@@ -22,11 +24,11 @@
     <hr>
     <h2>Education</h2>
     <template repeat="{{school in educations}}">
-      <education-element school="{{school}}"></education-element>
+      <education-element school="{{school}}" selectedColor="{{selectedColor}}"></education-element>
     </template>
     <h2>Employment</h2>
     <template repeat="{{job in employment}}">
-      <employment-element job="{{job}}"></employment-element>
+      <employment-element job="{{job}}" selectedColor="{{selectedColor}}"></employment-element>
     </template>
   </template>
   <script>
@@ -37,12 +39,16 @@
             name: "Texas Academy of Mathematics and Science",
             website: "https://tams.unt.edu/",
             duration: "Aug 2006 - May 2008",
-            location: "Denton, TX, 76203"
+            location: "Denton, TX, 76203",
+            degree : "Associates of Science",
+            grad_date: "May 2008"
           },{
             name: "Howard University",
             website: "http://www2.howard.edu/",
             duration: "Aug 2012 - Present",
-            location: "Washington, DC, 20010"
+            location: "Washington, DC, 20010",
+            degree: "Bachelors of Science of Systems and Computer Science",
+            grad_date: "May 2016"
           }
         ],
         employment:[{
@@ -73,74 +79,131 @@
 </polymer-element>
 
 
-<polymer-element name="education-element" attributes="selectedColor school" layout horizontal>
+<polymer-element name="education-element"
+  attributes="selectedColor school"
+  layout horizontal
+  on-mouseover="{{onHovered}}"
+  on-mouseout="{{onUnhovered}}">
   <template>
     <style>
       :host {
         display: block;
+        /*background-color: white;*/
+        /*width:80%;*/
+        margin: 16px 16px;
       }
       h1,h2,h3{
         color: {{selectedColor}};
         font-weight: normal;
       }
+      div{
+        margin-right:2px;
+        margin-left: 2px;
+      }
       div#left_margin{
-        width: 20%;
-        margin-right: 16px;
+      }
+      paper-shadow{
+        background-color: white;
+        padding: 8px 8px;
+        width: 80%;
+      }
+      paper-card{
+        width: 100%;
+        background-color: {{backgroundColor}};
+      }
+      paper-card /deep/ h1,h2,h3{
+        font-weight: normal;
       }
     </style>
-    <div id="left_margin" layout vertical>
-      <div>{{school.name}}</div>
-      <div>{{school.duration}}</div>
-      <div>{{school.location}}</div>
-    </div>
-    <div id="right_margin" layout vertical>
-
-    </div>
-    <content></content>
+    <paper-card id="paper_card" heading="{{school.name}}" z="1" animated>
+      <div content>
+        <div layout horizontal justified>
+          <div self-center>{{school.location}}</div>
+          <div self-center>{{school.duration}}</div>
+        </div>
+      </div>
+    </paper-card>
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
+        backgroundColor: "white",
+        onHovered: function(){
+          this.$.paper_card.z = 3;
+          this.backgroundColor = "#ddd";
+        },
+        onUnhovered: function(){
+          this.$.paper_card.z = 1;
+          this.backgroundColor = "white";
+        }
       });
     })();
   </script>
 </polymer-element>
 
 
-<polymer-element name="employment-element" attributes="selectedColor job" layout horizontal>
+<polymer-element name="employment-element"
+  attributes="selectedColor job"
+  layout horizontal
+  on-mouseover="{{onHovered}}"
+  on-mouseout="{{onUnhovered}}">
   <template>
     <style>
       :host {
         display: block;
+        margin: 16px 16px;
+        /*width: 80%;*/
       }
       h1,h2,h3{
         color: {{selectedColor}};
         font-weight: normal;
       }
-      div#left_margin{
-        width: 20%;
-        margin-right: 16px;
+      paper-shadow{
+        background-color: white;
+        padding: 8px 8px;
+        width:80%;
+      }
+      paper-card{
+        width: 100%;
+        background-color: {{backgroundColor}};
+      }
+      paper-card /deep/ h1,h2,h3{
+        font-weight: normal;
+        color: {{selectedColor}};
+        /*margin-bottom: 0px;*/
       }
     </style>
-    <div id="left_margin" layout vertical>
-      <div>{{job.company_name}}</div>
-      <div>{{job.duration}}</div>
-      <div>{{job.location}}</div>
-    </div>
-    <div id="right_margin" layout vertical>
-      <div>{{job.position}}</div>
-      <template repeat="{{task in job.tasks}}">
-         <div> - {{task}}</div>
-      </template>
-    </div>
-    <content></content>
-
+    <paper-card id="paper_card" heading="{{job.company_name}}" z="1" animated>
+      <div content>
+        <div layout horizontal justified>
+          <div self-center>{{job.location}}</div>
+          <div self-center>{{job.duration}}</div>
+        </div>
+      </div>
+      <div actions>
+        <template repeat="{{task in job.tasks}}" >
+          <div layout vertical>
+            {{task}}
+          </div>
+        </template>
+      </div actions>
+    </paper-card>
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
+        backgroundColor: "white",
+        onHovered: function(){
+          this.$.paper_card.z = 3;
+          this.backgroundColor = "#ddd";
+        },
+        onUnhovered: function(){
+          this.$.paper_card.z = 1;
+          this.backgroundColor = "white";
+
+        }
       });
     })();
   </script>

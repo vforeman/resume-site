@@ -1,0 +1,40 @@
+{
+  "educations":[{
+      "name": "Texas Academy of Mathematics and Science",
+      "website": "https://tams.unt.edu/",
+      "duration": "Aug 2006 - May 2008",
+      "location": "Denton, TX, 76203",
+      "degree" : "Associates of Science",
+      "grad_date": "May 2008"
+    },{
+      "name": "Howard University",
+      "website": "http://www2.howard.edu/",
+      "duration": "Aug 2012 - Present",
+      "location": "Washington, DC, 20010",
+      "degree": "Bachelors of Science of Systems and Computer Science",
+      "grad_date": "May 2016"
+    }
+  ],
+  "employment":[{
+      "company_name": "Howard University",
+      "position": "Systems Adminstration Assistant",
+      "duration": "8/27/2013 - present",
+      "location": "Washington, DC",
+      "tasks": [
+        "Oversaw Installation and Updating of new software on ~150 computers across 5 labs",
+        "Managment of LDAP servers",
+        "Management of Cloud resource servers"
+      ]
+    },{
+      "company_name": "AdeLabs",
+      "position": "Software Developer",
+      "duration": "1/5/2014 - present",
+      "location": "Washington, DC",
+      "tasks": [
+        "Created Polymer/Javascript Dashboard to display paginated data",
+        "Inegrated Polymer/Javascript Dashboard with Flask-based Restful API",
+        "Developed Map-based Application using LEaftletJS and MapBoxJS"
+      ]
+    },
+  ],
+}
