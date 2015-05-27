@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
 <polymer-element name="abilities-page" attributes="selectedColor">
   <template>
@@ -6,21 +7,28 @@
       :host {
         display: block;
       }
-      h1{
+      h1,h2,h3{
         color: {{selectedColor}};
         font-weight: normal;
       }
+      div{}
     </style>
     <page-header>
-      <h1>abilities</h1>
+      <h1>Abilities</h1>
       <p>"You can't buy groceries with grades."</br> - Me</p>
     </page-header>
     <hr>
+    <paper-card heading="Skills" headingColor="{{selectedColor}}" z="1" animated>
+      <div content layout horizontal>
+
+      </div>
+    </paper-card>
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
+        
       });
     })();
   </script>
