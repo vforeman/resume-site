@@ -27,7 +27,7 @@
     </page-header>
     <hr>
     <div id="profile_body" layout horizontal>
-      <paper-card heading="About Me" flex>
+      <paper-card heading="About Me" flex  headingColor="{{selectedColor}}">
         <div content>
           <p>
             Howdy! I'm a student at Howard University and a Fullstack Web Developer. I've focused much of my attention on Node.js stacks with
@@ -46,14 +46,16 @@
           position="center"></img>
         <div flex></div>
       </div>
-      <div class="sub-body" flex layout vertical>
-        <h3>Details</h3>
-        Name: Victor B. Foreman
-        <div>Location: Washington, DC</div>
-        Age: 25 years old
-        <h3>I'm Sociable</h3>
-        Twitter: @GOVJ
-      </div>
+      <paper-card heading="Details" flex headingColor="{{selectedColor}}">
+        <div content>
+          <div>Name: Victor B. Foreman</div>
+          <div>Location: Washington, DC</div>
+          <div>Age: 25 years old</div>
+          <!-- <h3>I'm Sociable</h3> -->
+          Twitter: @GOVJ
+        </div>
+      </paper-card>
+
     </div>
   </template>
   <script>
