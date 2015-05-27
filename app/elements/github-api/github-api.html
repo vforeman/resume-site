@@ -8,12 +8,41 @@
         display: block;
       }
     </style>
-    <core-ajax></core-ajax>
+    <core-ajax id="core_ajax"
+      auto
+      url="{{url}}"
+      handleAs="json"
+      on-core-response="{{handleResponse}}"></core-ajax>
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
+        githubToken: "1810752b6e0fc06935da0227bad414b2afd6f827",
+        isAuthenticated: false,
+        url: "https://api.github.com/?access_token=",
+        created: function(){
+          this.url = this.url + this.githubToken;
+        },
+        handleResponse: function(e){
+          // console.log(e.detail.response);
+          // console.log(e);
+          if(this.isAuthenticated == true){
+            console.log(e.detail.response);
+          }
+          if(e.detail.response.hasOwnProperty('current_user_url')){
+            console.log("has current_user_url");
+            this.isAuthenticated = true;
+            this.response = e.detail.response;
+          }
+
+        },
+        isAuthenticatedChanged: function(oldVal, newVal, el){
+          console.log(newVal);
+          console.log(this.response);
+          this.url = "https://api.github.com/users/vforeman/repos";
+          // this.$["core_ajax"].url = "users/{user}/repos" + "?access_token=" + this.githubToken;
+        }
       });
     })();
   </script>
