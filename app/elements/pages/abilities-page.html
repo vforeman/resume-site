@@ -1,34 +1,106 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
 
-<polymer-element name="abilities-page" attributes="selectedColor">
+<polymer-element name="abilities-page" attributes="selectedColor" >
   <template>
     <style>
       :host {
         display: block;
+        margin: 16px 16px;
       }
       h1,h2,h3{
         color: {{selectedColor}};
         font-weight: normal;
       }
-      div{}
+      core-icon[icon="star"]{
+        height: 32px;
+        width: 32px
+      }
+      div#language_cell{
+        /*width:40%;*/
+      }
+      paper-card{
+        margin: 16px 16px;
+      }
     </style>
     <page-header>
       <h1>Abilities</h1>
-      <p>"You can't buy groceries with grades."</br> - Me</p>
+      <p>"You can't buy groceries with grades." - Me</p>
     </page-header>
     <hr>
-    <paper-card heading="Skills" headingColor="{{selectedColor}}" z="1" animated>
-      <div content layout horizontal>
-
-      </div>
-    </paper-card>
+    <div layout horizontal>
+      <paper-card flex heading="Languages" headingColor="{{selectedColor}}" z="1" animated center>
+        <div id="language_content" content>
+          <template  repeat="{{languages}}">
+            <div id="language_cell" layout horizontal >
+              <div flex>{{language_name}}</div>
+              <template repeat="{{language_rate}}">
+                <core-icon icon="star"></core-icon>
+                <!-- <tech-icons></tech-icons> -->
+              </template>
+            </div>
+          </template>
+        </div>
+      </paper-card>
+      <paper-card flex heading="Frameworks & Libraries" headingColor="{{selectedColor}}" z="1" animated center>
+        <div id="framework_content" content>
+          <template  repeat="{{frameworks}}">
+            <div id="framework_cell" layout horizontal >
+              <div flex>{{framework_name}}</div>
+              <template repeat="{{framework_rate}}">
+                <core-icon icon="star"></core-icon>
+              </template>
+            </div>
+          </template>
+        </div>
+      </paper-card>
+    </div>
   </template>
   <script>
     (function () {
       Polymer({
         // define element prototype here
-        
+        languages:[
+            {language_name: "Javascript", language_rate: 4},
+            {language_name: "HTML", language_rate: 4},
+            {language_name: "CSS", language_rate: 4},
+            {language_name: "C", language_rate: 4},
+            {language_name: "C++", language_rate: 4},
+            {language_name: "C#", language_rate: 4},
+            {language_name: "Python", language_rate: 4},
+            {language_name: "Javascript", language_rate: 3},
+            {language_name: "Javascript", language_rate: 3},
+        ],
+        frameworks:[
+            {framework_name: "Polymer WebComponents", framework_rate: 4},
+            {framework_name: "AngularJS", framework_rate: 4},
+            {framework_name: "jQuery", framework_rate: 4},
+            {framework_name: "LeafletJS", framework_rate: 4},
+            {framework_name: "MapBoxJS", framework_rate: 4},
+            {framework_name: "NodeJS", framework_rate: 4},
+            {framework_name: "Grunt", framework_rate: 4},
+            {framework_name: "Bower", framework_rate: 4},
+            {framework_name: "Android SDK", framework_rate: 4},
+        ],
+        created: function(){
+          this.languages.forEach(function(el, num, arr){
+            el.language_rate = this.RateToArray(el.language_rate);
+          },this);
+          this.frameworks.forEach(function(el, num, arr){
+            el.framework_rate = this.RateToArray(el.framework_rate);
+          },this);
+          console.log(this.languages);
+        },
+        RateToArray: function(num){
+          arr = [];
+          for(var i = num; num > 0; --num){
+            arr.push(num);
+          }
+          return arr;
+        }
+
       });
     })();
   </script>
